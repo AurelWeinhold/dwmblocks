@@ -1,11 +1,11 @@
 /* macro for conveniently specifying pathu and pathc below */
-#define PATH(name)                      "/home/ashish/.local/projects/dwmblocks/blocks/"name
+#define PATH(name) "/home/aurel/.config/dwmblocks/blocks/"name
 
 /* buffer size for capturing output of the programs used for updating blocks */
-#define CMDOUTLENGTH                    50
+#define CMDOUTLENGTH 50
 
 /* buffer size for status text */
-#define STATUSLENGTH                    256
+#define STATUSLENGTH 256
 
 /* DELIMITERENDCHAR must be less than 32.
  * At max, DELIMITERENDCHAR - 1 number of clickable blocks will be allowed.
@@ -16,11 +16,11 @@
    defined in colors array in dwm's config.h and so on.
  * If you wish to change DELIMITERENDCHAR, don't forget to update its value in
    dwm.c and color codes in your pathu programs. */
-#define DELIMITERENDCHAR                10
+#define DELIMITERENDCHAR 10
 
 /* delimiter specified as an array of characters
  * don't remove DELIMITERENDCHAR at the end */
-static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
+static const char delimiter[] = { ' ', '|', ' ', DELIMITERENDCHAR };
 
 #include "block.h"
 
@@ -45,10 +45,15 @@ static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 #define INTERVALn                       0
 
 static Block blocks[] = {
-/*      pathu                           pathc                           interval        signal */
-        { PATH("calendar.sh"),          NULL,                           30,             1},
-        { PATH("volume.sh"),            PATH("volume_button.sh"),       0,              2},
-        { PATH("cpu_temp.sh"),          PATH("cpu_temp_button.sh"),     1,              4},
-        { PATH("battery.sh"),           PATH("battery_button.sh"),      30,             3},
-        { NULL } /* just to mark the end of the array */
+	/* pathu                         pathc                           interval        signal */
+	//{ PATH("calendar.sh"),          NULL,                           30,             1},
+	{ PATH("nextcloud_running.sh"), "/usr/bin/nextcloud",            60,             8 },
+	{ PATH("keymap.sh"),            PATH("keymap_toggle.sh"),        0,              7 },
+	{ PATH("volume.sh"),            PATH("volume_button.sh"),        60,             2 },
+	//{ PATH("cpu_temp.sh"),          PATH("cpu_temp_button.sh"),     1,              4},
+	{ PATH("backlight.sh"),         NULL,                            0,              5 },
+	{ PATH("wifi.sh"),				NULL,							 1,             6 },
+	{ PATH("battery.sh"),           PATH("battery_button.sh"),       60,             3 },
+	{ PATH("time.sh"),              NULL,                            5,              4 },
+	{ NULL } /* just to mark the end of the array */
 };
